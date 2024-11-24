@@ -33,40 +33,28 @@ public class Main {
                 System.out.println("Mon");
                 break;
             case 1:
+            case -6:
                 System.out.println("Tue");
                 break;
             case 2:
-                System.out.println("Wed");
-                break;
-            case 3:
-                System.out.println("Thu");
-                break;
-            case 4:
-                System.out.println("Fri");
-                break;
-            case 5:
-                System.out.println("Sat");
-                break;
-            case 6:
-                System.out.println("Sun");
-                break;
-            case -1:
-                System.out.println("Sun");
-                break;
-            case -2:
-                System.out.println("Sat");
-                break;
-            case -3:
-                System.out.println("Fri");
-                break;
-            case -4:
-                System.out.println("Thu");
-                break;
             case -5:
                 System.out.println("Wed");
                 break;
-            case -6:
-                System.out.println("Tue");
+            case 3:
+            case -4:
+                System.out.println("Thu");
+                break;
+            case 4:
+            case -3:
+                System.out.println("Fri");
+                break;
+            case 5:
+            case -2:
+                System.out.println("Sat");
+                break;
+            case 6:
+            case -1:
+                System.out.println("Sun");
                 break;
         }
 
