@@ -6,7 +6,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        int[] field = new int[2001];
+        int[] field = new int[2000];
         int location = 1000;
         for(int i = 0; i < n; i++){ 
             int stride;
@@ -15,22 +15,12 @@ public class Main {
             arrow  = scanner.next().charAt(0);
             
             if(arrow == 'R'){
-                for(int j = 0; j < stride; j++){
-                    if(location == 1000){
-                        j--;
-                        location++;
-                        continue;
-                    }                      
-                    location++;
+                for(int j = 0; j < stride; j++){                   
                     field[location] += 1;
+                    location++;
                 }
             } else {
                 for(int j = 0; j < stride; j++){
-                    if(location == 1000){
-                        j--;
-                        location--;
-                        continue;
-                    }                      
                     location--;
                     field[location] += 1;
                 }
@@ -38,7 +28,7 @@ public class Main {
         }
 
         int count = 0;
-        for(int i =0 ; i < 2001; i++){
+        for(int i =0 ; i < 2000; i++){
             if(field[i] >= 2){
                 count++;
             }
