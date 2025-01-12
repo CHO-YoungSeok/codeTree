@@ -34,16 +34,18 @@ public class Main {
 
             if(direction == 'R') {
                 for(int  j = 0; j  < x; j++){
-                    head++;
                     field[head].black++;
                     field[head].last = 2;
+                    head++;
                 }
+                head--;
             } else {
                 for(int j = 0; j < x; j++){
                     field[head].white++;
                     field[head].last = 1;
                     head--;
                 }
+                head++;
             }
         }
         int w =0, b = 0, s = 0;
