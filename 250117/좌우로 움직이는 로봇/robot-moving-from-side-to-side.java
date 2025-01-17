@@ -36,18 +36,20 @@ public class Main {
                     locationB -= timeB.get(phageB);
                 phageB++;
             }
-            if(locationA == locationB) {
-                if (preLocationA != preLocationB)  
-                    answer++;       
-            }
+            
             if(locationA < locationB) {
                 if(preLocationA > preLocationB)
                     answer++;
             }
-            if(locationA > locationB) {
+            else if(locationA > locationB) {
                 if(preLocationA < preLocationB)
                     answer++;
             }
+            else if(locationA == locationB) {
+                if (preLocationA != preLocationB)  
+                    answer++;       
+            }
+            
             preLocationA = locationA;
             preLocationB = locationB;
             // System.out.print(locationA);
