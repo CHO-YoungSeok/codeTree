@@ -8,7 +8,7 @@ public class Main {
         int n = strCommand.length();
         int[] dx = {0, 1, 0, -1};
         int[] dy = {1, 0, -1, 0};
-        int intDir = 4;
+        int intDir = 0;
         char charCommand;
         int nx = 0, ny = 0;
 
