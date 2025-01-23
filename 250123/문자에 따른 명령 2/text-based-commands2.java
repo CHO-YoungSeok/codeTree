@@ -15,12 +15,12 @@ public class Main {
         for(int i = 0; i < n; i++) {
             charCommand = strCommand.charAt(i);
             if(charCommand == 'L'){
-                --intDir;
+                intDir = (intDir -1 +4) % 4;
             } else if(charCommand == 'R') {
-                ++intDir;
+                intDir = (intDir +1) % 4;
             } else if(charCommand == 'F') {
-                nx += dx[(intDir+4) % 4];
-                ny += dy[(intDir+4) % 4];
+                nx += dx[intDir];
+                ny += dy[intDir];
             }
         }
         System.out.print(nx);
