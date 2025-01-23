@@ -57,14 +57,14 @@ public class Main {
             Human hy = humans.get(infection.y - 1);
             if(hx.count > 0 || hy.count > 0){
                 if(hx.count > 0){
-                    hx.count--;
+                    --hx.count;
                     if(hy.infected == false){
                         hy.infected = true;
-                        hy.count = k;
+                        hy.count = k+1;
                     }
                 }
                 if(hy.count > 0){
-                    hy.count--;
+                    --hy.count;
                     if(hx.infected == false){
                         hx.infected = true;
                         hx.count = k;
