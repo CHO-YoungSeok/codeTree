@@ -33,10 +33,10 @@ public class Main {
         for(int i = 0; i < n; i++){
             humans.add(new Human());
         }
-        Human firstHuman = new Human();
-        firstHuman.infected = true;
-        firstHuman.count = k;
-        humans.set(p-1, firstHuman);
+        Human initialHuman = new Human();
+        initialHuman.infected = true;
+        initialHuman.count = k;
+        humans.set(p-1, initialHuman);
         
         List<Infection> infections = new ArrayList<>(t);
         for(int i = 0; i < t; i++) {
@@ -48,31 +48,23 @@ public class Main {
             infections.add(infection);
         }
         Collections.sort(infections);
-        
         Iterator<Infection> iterator = infections.iterator();
-        // while(iterator.hasNext()){
-        //     Infection infection = iterator.next();
-        //     System.out.print(infection.time);
-        //     System.out.print(infection.x);
-        //     System.out.print(infection.y);
-        //     System.out.println();
-        // }
-        iterator = infections.iterator();
 
+        iterator = infections.iterator();
         while(iterator.hasNext()) {
             Infection infection = iterator.next();
             Human hx = humans.get(infection.x - 1);
             Human hy = humans.get(infection.y - 1);
             if(hx.count > 0 || hy.count > 0){
                 if(hx.count > 0){
-                    --hx.count;
+                    hx.count--;
                     if(hy.infected == false){
                         hy.infected = true;
                         hy.count = k;
                     }
                 }
                 if(hy.count > 0){
-                    --hy.count;
+                    hy.count--;
                     if(hx.infected == false){
                         hx.infected = true;
                         hx.count = k;
