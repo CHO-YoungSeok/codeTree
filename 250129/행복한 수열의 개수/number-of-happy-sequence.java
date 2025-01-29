@@ -26,13 +26,16 @@ public class Main {
                         primeNum = preNum;
                         count = 2;
                     }
+                } else {
+                    preNum = grid[i][j];
+                    count = 1;
                 }
                 if(count >= m) {
                     ++answer;
                     break;
                 }
-                preNum = grid[i][j];
-            }
+
+            }      
         }
 
         for(int i = 0; i < n; i++){
@@ -48,13 +51,15 @@ public class Main {
                         primeNum = preNum;
                         count = 2;
                     }
+                } else {
+                    preNum = grid[j][i];
+                    count = 1;    
                 }
                 if(count >= m) {
                     ++answer;
                     break;
                 }
-                preNum = grid[j][i];
-            }
+            }      
         }        
 
         System.out.print(answer);
