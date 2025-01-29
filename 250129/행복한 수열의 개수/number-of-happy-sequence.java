@@ -12,15 +12,17 @@ public class Main {
                 grid[i][j] = scanner.nextInt();
             }
         }
-        if(n == 1){
-            if(grid[0][0] == 1){
-                System.out.print(2);
-            }
-            else {
-                System.out.print(0);
-            }
-            return;
-        }
+        // if(n == 1){
+        //     if(grid[0][0] == 1){
+        //         System.out.print(2);
+        //     }
+        //     else {
+        //         System.out.print(0);
+        //     }
+        //     return;
+        // }
+
+
         int answer = 0;
         for(int i = 0; i < n; i++){
             int primeNum;
@@ -40,11 +42,10 @@ public class Main {
                     count = 1;
                 }
                 if(count >= m) {
-                    ++answer;
                     break;
                 }
-
-            }      
+            }    
+            if(count >= m) ++answer;
         }
 
         for(int i = 0; i < n; i++){
@@ -65,10 +66,12 @@ public class Main {
                     count = 1;    
                 }
                 if(count >= m) {
-                    ++answer;
                     break;
                 }
-            }      
+            } 
+            if(count >= m){
+                ++answer;
+            }
         }        
 
         System.out.print(answer);
