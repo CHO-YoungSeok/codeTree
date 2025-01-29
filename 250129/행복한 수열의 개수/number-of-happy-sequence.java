@@ -12,6 +12,15 @@ public class Main {
                 grid[i][j] = scanner.nextInt();
             }
         }
+        if(n == 1){
+            if(grid[0][0] == 1){
+                System.out.print(2);
+            }
+            else {
+                System.out.print(0);
+            }
+            return;
+        }
         int answer = 0;
         for(int i = 0; i < n; i++){
             int primeNum;
@@ -42,8 +51,8 @@ public class Main {
             int primeNum;
             int preNum;
             preNum = primeNum = grid[0][i];
-            int count = 1;
-            for(int j = 1; j < n; j++){
+            int count = 0;
+            for(int j = 0; j < n; j++){
                 if(preNum == grid[j][i]){
                     if(primeNum == preNum){
                         ++count;
