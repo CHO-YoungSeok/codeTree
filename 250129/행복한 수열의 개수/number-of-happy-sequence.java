@@ -14,7 +14,7 @@ public class Main {
         }
         int answer = 0;
         for(int row = 0; row < n; row++){
-            int count = 0;
+            int count = 1;
             int preNum = grid[row][0];
             for(int col = 1; col < n; col++){
                 if(preNum == grid[row][col]) {
@@ -23,10 +23,10 @@ public class Main {
                 }
                 preNum = grid[row][col];
             }
-            if(count >= m-1) ++answer;
+            if(count >= m) ++answer;
         }
         for(int col = 0; col < n; col++){
-            int count = 0;
+            int count = 1;
             int preNum = grid[0][col];
             for(int row = 1; row < n; row++){
                 if(preNum == grid[row][col]) {
@@ -35,7 +35,7 @@ public class Main {
                 }
                 preNum = grid[row][col];
             }
-            if(count >= m-1) ++answer;
+            if(count >= m) ++answer;
         }
 
         System.out.print(answer);
