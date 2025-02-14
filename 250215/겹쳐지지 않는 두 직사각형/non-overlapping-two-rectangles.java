@@ -42,7 +42,7 @@ public class Main {
         for(int row = 0; row < n; row++){
             for(int col = 0; col < m; col++){
                 for(int spanRow = 0; row+spanRow < n; spanRow++){
-                    for(int spanCol = 0; col+spanCol < n; spanCol++){
+                    for(int spanCol = 0; col+spanCol < m; spanCol++){
                         int sum = 0;
                         for(int rowHead = row; rowHead <= row+spanRow; rowHead++){
                             for(int colHead = col; colHead <=col+spanCol; colHead++){
@@ -56,6 +56,8 @@ public class Main {
             }
         }
         Collections.sort(list, Collections.reverseOrder());
+        // System.out.println(list.get(0));
+        // System.out.println(list.get(1));
 
         int lenList = list.size();
         int max = Integer.MIN_VALUE;
