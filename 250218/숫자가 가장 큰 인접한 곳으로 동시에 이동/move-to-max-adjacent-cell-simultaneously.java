@@ -26,14 +26,14 @@ public class Main {
         
         // it help to make clean code.
         int[] dx = {0, 0, -1, 1};
-        int[] dy = {1, -1, 0, 0};
+        int[] dy = {-1, 1, 0, 0};
 
         boolean[] delPos = new boolean[m];
 
         for(int second = 0; second < t; second++){
             for(int i = 0;  i < m; i++){
                 if(delPos[i] == true) continue;
-                
+
                 int x = posX[i];
                 int y = posY[i];
                 int big = 0;
@@ -62,7 +62,6 @@ public class Main {
             for(int i = 0; i < m; i++) {
                 if(tempDelPos[i] == true) {
                     delPos[i] = tempDelPos[i];
-                    // System.out.println(String.format("%d : %d, %d => %d", i, posX[i], posY[i], grid[posX[i]][posY[i]]));
                 }
             }
 
