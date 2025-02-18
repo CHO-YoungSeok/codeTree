@@ -19,26 +19,31 @@ public class Main {
         while(0 < m) {
             int num = 1;
             while(num <= n * n) {
+                int row = -1;
+                int col = -1;
                 for(int r = 0; r < n; r++) {
                     for(int c = 0; c < n; c++){
                         if(num == grid[r][c]) {
-                            int max = 0;
-                            int dir = -1;
-                            for(int d = 0; d < 8; d++){
-                                if(0 <= r + dr[d] && r + dr[d] < n && 0 <= c + dc[d] && c + dc[d] < n){
-                                    if(max < grid[r + dr[d]][c + dc[d]]){
-                                        max = grid[r + dr[d]][c + dc[d]];
-                                        dir = d;
-                                    }
-                                }
-                            }
-                            
-                            int temp = grid[r][c];
-                            grid[r][c] = grid[r + dr[dir]][c + dc[dir]];
-                            grid[r + dr[dir]][c + dc[dir]] = temp;
-                        } 
+                            row = r;
+                            col = c;
+                        }
                     }
                 }
+                int max = 0;
+                int dir = -1;
+                for(int d = 0; d < 8; d++){
+                    if(0 <= row + dr[d] && row + dr[d] < n && 0 <= col + dc[d] && col + dc[d] < n){
+                        if(max < grid[row + dr[d]][col + dc[d]]){
+                            max = grid[row + dr[d]][col + dc[d]];
+                            dir = d;
+                        }
+                    }
+                }
+                
+                int temp = grid[row][col];
+                grid[row][col] = grid[row + dr[dir]][col + dc[dir]];
+                grid[row + dr[dir]][col + dc[dir]] = temp;
+                        
                 num++;
             }
             m--;
