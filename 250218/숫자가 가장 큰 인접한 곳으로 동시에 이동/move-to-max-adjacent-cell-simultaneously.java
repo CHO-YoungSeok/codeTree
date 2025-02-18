@@ -29,6 +29,7 @@ public class Main {
         int[] dy = {-1, 1, 0, 0};
 
         boolean[] delPos = new boolean[m];
+        boolean[] tempDelPos = new boolean[m];       
 
         for(int second = 0; second < t; second++){
             for(int i = 0;  i < m; i++){
@@ -50,7 +51,7 @@ public class Main {
                 posX[i] += dx[dir];
                 posY[i] += dy[dir];
             }
-            boolean[] tempDelPos = new boolean[m];            
+     
             for(int i = 0; i < m; i++){
                 if(delPos[i] == true) continue;
 
@@ -63,10 +64,11 @@ public class Main {
                     }
                 }
             }
+
+
+
             for(int i = 0; i < m; i++) {
-                if(tempDelPos[i] == true) {
-                    delPos[i] = tempDelPos[i];
-                }
+                delPos[i] = tempDelPos[i];
             }
         }
 
