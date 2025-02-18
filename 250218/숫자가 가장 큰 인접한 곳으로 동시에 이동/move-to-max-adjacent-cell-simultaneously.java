@@ -36,7 +36,7 @@ public class Main {
 
                 int x = posX[i];
                 int y = posY[i];
-                int big = 0;
+                int big = Integer.MIN_VALUE;
                 int dir = 0;
 
                 for(int j = 0;  j < 4; j++){
@@ -56,7 +56,7 @@ public class Main {
 
                 for(int j = i+1; j < m; j++){
                     if(delPos[j] == true) continue;
-                    
+
                     if(posX[i] == posX[j] && posY[i] == posY[j]){
                         tempDelPos[i] = true;
                         tempDelPos[j] = true;         
@@ -68,7 +68,6 @@ public class Main {
                     delPos[i] = tempDelPos[i];
                 }
             }
-
         }
 
         int count = 0;
