@@ -48,32 +48,29 @@ public class Main {
                 posX[i] += dx[dir];
                 posY[i] += dy[dir];
             }
-            boolean[] tempDelPos = new boolean[m];
-            for(int i = 0; i < m && delPos[i] == false; i++){
-                for(int j = i+1; j < m && delPos[j] == false; j++){
-                    if(posX[i] == posX[j] && posY[i] == posY[j]){
+            boolean[] tempDelPos = new boolean[m];            
+            for(int i = 0; i < m; i++){
+                for(int j = i+1; j < m; j++){
+                    if(posX[i] == posX[j] && posY[i] == posY[j] && delPos[i] == false && delPos[j] == false){
                         tempDelPos[i] = true;
                         tempDelPos[j] = true;         
                     }
                 }
             }
-
             for(int i = 0; i < m; i++) {
                 if(tempDelPos[i] == true) {
                     delPos[i] = tempDelPos[i];
-                    System.out.println(String.format("%d : %d, %d => %d", i, posX[i], posY[i], grid[posX[i]][posY[i]]));
+                    // System.out.println(String.format("%d : %d, %d => %d", i, posX[i], posY[i], grid[posX[i]][posY[i]]));
                 }
             }
 
         }
 
-        int result = 0;
-        for(int i = 0;  i < m; i++){
-            if(delPos[i] == false){
-                result++;
-            }
+        int count = 0;
+        for(int  i = 0; i < m; i++){
+            if(delPos[i] == false) count++;
         }
-        System.out.println(result);
+        System.out.println(count);
 
 
     }
