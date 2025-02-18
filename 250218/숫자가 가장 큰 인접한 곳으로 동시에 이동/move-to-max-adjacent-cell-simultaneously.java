@@ -25,25 +25,21 @@ public class Main {
         }
         
         // it help to make clean code.
-        int[] dx = {0, 0, -1, 1};
-        int[] dy = {-1, 1, 0, 0};
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
 
         boolean[] delPos = new boolean[m];
-        boolean[] tempDelPos = new boolean[m]; 
 
         for(int second = 0; second < t; second++){
             for(int i = 0;  i < m; i++){
                 if(delPos[i] == true) continue;
 
-                int x = posX[i];
-                int y = posY[i];
                 int big = Integer.MIN_VALUE;
                 int dir = 0;
-
                 for(int j = 0;  j < 4; j++){
-                    if(0 <= x + dx[j] && x + dx[j] < n && 0 <= y + dy[j] && y+dy[j] < n){
-                        if(big < grid[x + dx[j]][y+ dy[j]]) {
-                            big = grid[x + dx[j]][y+ dy[j]];
+                    if(0 <= posX[i] + dx[j] && posX[i] + dx[j] < n && 0 <= posY[i] + dy[j] && posY[i] + dy[j] < n){
+                        if(big < grid[posX[i] + dx[j]][posY[i] + dy[j]]) {
+                            big = grid[posX[i] + dx[j]][posY[i] + dy[j]];
                             dir = j;
                         }
                     }
@@ -51,7 +47,8 @@ public class Main {
                 posX[i] += dx[dir];
                 posY[i] += dy[dir];
             }
-            tempDelPos = new boolean[m];
+
+            boolean[] tempDelPos = new boolean[m];
      
             for(int i = 0; i < m; i++){
                 if(delPos[i] == true) continue;
