@@ -31,7 +31,9 @@ public class Main {
         boolean[] delPos = new boolean[m];
 
         for(int second = 0; second < t; second++){
-            for(int i = 0;  i < m && delPos[i] == false; i++){
+            for(int i = 0;  i < m; i++){
+                if(delPos[i] == true) continue;
+                
                 int x = posX[i];
                 int y = posY[i];
                 int big = 0;
