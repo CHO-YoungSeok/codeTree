@@ -25,8 +25,8 @@ public class Main {
         }
         
         // it help to make clean code.
-        int[] dx = {-1, 1, 0, 0};
-        int[] dy = {0, 0, -1, 1};
+        int[] dy = {-1, 1, 0, 0};
+        int[] dx = {0, 0, -1, 1};
 
         boolean[] delPos = new boolean[m];
 
