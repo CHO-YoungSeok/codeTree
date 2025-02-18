@@ -29,6 +29,7 @@ public class Main {
         int[] dy = {1, -1, 0, 0};
 
         boolean[] delPos = new boolean[m];
+
         for(int second = 0; second < t; second++){
             for(int i = 0;  i < m && delPos[i] == false; i++){
                 int x = posX[i];
@@ -60,6 +61,7 @@ public class Main {
             for(int i = 0; i < m; i++) {
                 if(tempDelPos[i] == true) {
                     delPos[i] = tempDelPos[i];
+                    System.out.println(String.format("%d : %d, %d => %d", i, posX[i], posY[i], grid[posX[i]][posY[i]]));
                 }
             }
 
