@@ -20,8 +20,8 @@ public class Main {
         int[] posY = new int[m];
 
         for(int i = 0; i < m; i++){
-            posX[i] = sc.nextInt();
-            posY[i] = sc.nextInt();
+            posX[i] = sc.nextInt() -1;
+            posY[i] = sc.nextInt() -1;
         }
         
         // it help to make clean code.
