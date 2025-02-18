@@ -29,22 +29,17 @@ public class Main {
         int[] dy = {1, -1, 0, 0};
 
         boolean[] delPos = new boolean[m];
-        for(int phage = 0; phage < t; phage++){
+        for(int second = 0; second < t; second++){
             for(int i = 0;  i < m && delPos[i] != true; i++){
                 int x = posX[i];
                 int y = posY[i];
                 int big = 0;
                 int dir = 0;
+
                 for(int j = 0;  j < 4; j++){
                     if(0 <= x + dx[j] && x + dx[j] < n && 0 <= y + dy[j] && y+dy[j] < n){
                         if(big < grid[x + dx[j]][y+ dy[j]]) {
                             big = grid[x + dx[j]][y+ dy[j]];
-                        }
-                    }
-                }
-                for(int j = 0;  j < 4; j++){  // set direction
-                    if(0 <= x + dx[j] && x + dx[j] < n && 0 <= y + dy[j] && y+dy[j] < n){
-                        if(big == grid[x + dx[j]][y+ dy[j]]) {
                             dir = j;
                         }
                     }
@@ -52,15 +47,21 @@ public class Main {
                 posX[i] += dx[dir];
                 posY[i] += dy[dir];
             }
-            
-            for(int i = 0; i < m && delPos[i] != true; i++){
-                for(int j = i+1; j < m; j++){
+            boolean[] tempDelPos = new boolean[m];
+            for(int i = 0; i < m-1 && delPos[i] != true; i++){
+                for(int j = i+1; j < m && delPos[j] != true; j++){
                     if(posX[i] == posX[j] && posY[i] == posY[j]){
-                        delPos[i] = true;
-                        delPos[j] = true;         
+                        tempDelPos[i] = true;
+                        tempDelPos[j] = true;         
                     }
                 }
             }
+            for(int i = 0; i < m; i++) {
+                if(tempDelPos[i] == true) {
+                    delPos[i] = tempDelPos[i];
+                }
+            }
+
         }
 
         int result = 0;
