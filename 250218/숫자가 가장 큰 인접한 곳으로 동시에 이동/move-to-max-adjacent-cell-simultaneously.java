@@ -52,8 +52,12 @@ public class Main {
             }
             boolean[] tempDelPos = new boolean[m];            
             for(int i = 0; i < m; i++){
+                if(delPos[i] == true) continue;
+
                 for(int j = i+1; j < m; j++){
-                    if(posX[i] == posX[j] && posY[i] == posY[j] && delPos[i] == false && delPos[j] == false){
+                    if(delPos[j] == true) continue;
+                    
+                    if(posX[i] == posX[j] && posY[i] == posY[j]){
                         tempDelPos[i] = true;
                         tempDelPos[j] = true;         
                     }
