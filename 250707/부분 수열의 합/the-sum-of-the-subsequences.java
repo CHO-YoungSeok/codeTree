@@ -11,31 +11,27 @@ public class Main {
         }
         // Please write your code here.
 
-        boolean[] dp = new boolean[m + 1];
-        boolean[] buffer = new boolean[m + 1];
-        dp[0] = true;
+        int[] dp = new int[m + 1];
+        for (int i = 1; i < m + 1; i++) {
+            dp[i] = -1;
+        }
+        List<Integer> buffer = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m + 1; j++) {
+            for (int num = m; 0 < num; num--) {
                 if (
-                    dp[j] && 
-                    arr[i] + j < m + 1
+                    num - arr[i] >= 0 &&
+                    dp[num - arr[i]] != -1
                 ) {
-                    buffer[arr[i] + j] = true;
+                    dp[num] = 1;
                 }
             }
-            dp = Arrays.copyOf(buffer, m + 1);
         }
-        String answer = new String();
-        if (dp[m]) {
-            answer = "Yes";
+        if (dp[m] == 1) {
+            System.out.println("Yes");
         } else {
-            answer = "No";
+            System.out.println("No");
         }
-        System.out.println(answer);
 
-        // for (boolean b : dp) {
-        //     System.out.print(b + " ");
-        // }
     }
 }
