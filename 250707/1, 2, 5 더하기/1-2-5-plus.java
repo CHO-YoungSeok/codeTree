@@ -7,12 +7,10 @@ public class Main {
         int[] dp = new int[n + 1];
         dp[0] = 0;
         dp[1] = 1;
-        dp[2] = 2;
-        dp[3] = 3;
-        dp[4] = 5;
-        dp[5] = 9;
+        dp[2] = 1;
+        dp[5] = 1;
         int[] nums = {1, 2, 5};
-        for (int i = 6; i < n + 1; i++) {
+        for (int i = 1; i < n + 1; i++) {
             for (int j = 0; j < 3; j++) {
                 if (
                     i - nums[j] >= 0
