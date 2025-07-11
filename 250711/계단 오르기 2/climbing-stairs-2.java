@@ -30,7 +30,7 @@ public class Main {
         // }
 
         int result = 0;
-        for (int i = 1;  i < 4; i++) {
+        for (int i = 0;  i < 4; i++) {
             result = Math.max(dp[n][i], result);
         }
 
