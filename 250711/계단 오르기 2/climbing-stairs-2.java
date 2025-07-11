@@ -23,9 +23,11 @@ public class Main {
                             , dp[i - 2][j] + coins[i - 1]);
             }
         }
-
-        int result = Math.max(dp[n][2], dp[n][3]);
-        System.out.println(result);       
+        int result = 0;
+        for(int num : dp[n]) {
+            result = Math.max(result, num);
+        }
+        System.out.println(result);
 
     }
 }
