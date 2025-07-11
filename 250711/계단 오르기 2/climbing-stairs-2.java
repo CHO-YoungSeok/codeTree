@@ -12,11 +12,12 @@ public class Main {
         dp[0][0] = 0;
         dp[1][0] = 0;
         dp[1][1] = coins[0];
-        dp[2][0] = 0;
-        dp[2][1] = coins[1];
+        dp[2][0] = coins[1];
+        dp[2][1] = dp[1][0] + coins[1];
         dp[2][2] = coins[0] + coins[1];
 
         for (int i = 3; i < n + 1; i++) {
+            dp[i][0] = dp[i - 2][0] + coins[i - 1];
             for (int j = 1; j < 4; j++) {
                 dp[i][j] = Math.max(dp[i - 1][j - 1] + coins[i - 1], dp[i - 2][j] + coins[i - 1]);
             }
@@ -32,7 +33,7 @@ public class Main {
         for (int i = 1;  i < 4; i++) {
             result = Math.max(dp[n][i], result);
         }
+
         System.out.println(result);
-        
     }
 }
