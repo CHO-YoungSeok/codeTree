@@ -27,7 +27,11 @@ public class Main {
         //     }
         //     System.out.println();
         // }
-        System.out.println(dp[n][3]);
+        int result = 0;
+        for (int i = 1;  i < 4; i++) {
+            result = Math.max(dp[n][i], result);
+        }
+        System.out.println(result);
         
     }
 }
