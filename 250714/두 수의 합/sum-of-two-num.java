@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -21,12 +22,21 @@ public class Main {
         }
 
         int count = 0;
+        
         for (int i = 0; i < n; i++) {
-            if (map.containsKey(k - arr[i])) {
-                count += (map.get(arr[i]) * map.get(k - arr[i]));       
+            int add = 0;
+            if (arr[i] == k - arr[i]) {
+                add = map.get(k - arr[i]) * map.get(k - arr[i]) / 2;
+                // System.out.println(arr[i]); 
+                map.remove(arr[i]);
+            } else if (map.containsKey(k - arr[i])) {
+                add = (map.get(arr[i]) * map.get(k - arr[i]));   
+                // System.out.println(arr[i]);    
                 map.remove(arr[i]);
                 map.remove(k - arr[i]);
-            }
+            } else {}
+
+            count += add;
         }
 
         System.out.println(count);        
