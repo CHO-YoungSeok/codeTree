@@ -19,19 +19,25 @@ public class Main {
             }
         }
 
+        // map.forEach((key, value) -> {
+        //     System.out.println(key + " " + value);
+        // });
+
         int count = 0;
         for (int i = 0; i < n; i++) {
             if (map.containsKey(k - arr[i])) {
                 if (k - arr[i] == arr[i]) {
-                    count += (map.get(arr[i]) * map.get(arr[i]) - 1) / 2;
-                    
+                    count += (map.get(arr[i]) * map.get(k - arr[i])) / 2;
                 } else {
-
+                    count += (map.get(arr[i]) * map.get(k - arr[i]));
                 }
-            }
+            } else {continue; }
+            map.remove(arr[i]);
+            map.remove(k - arr[i]);
+
+            // System.out.println(count);
         }
-        
 
-
+        System.out.println(count);
     }
 }
