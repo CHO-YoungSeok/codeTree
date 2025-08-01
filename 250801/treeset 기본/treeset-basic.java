@@ -26,14 +26,18 @@ public class Main {
                 lower_bound = ts.ceiling(num);
                 System.out.println(lower_bound == null ? "None" : lower_bound);
             } else if (cmd.equals("upper_bound")) {
-                 num = sc.nextInt();
-                Integer lower_bound = new Integer(0);
-                lower_bound = ts.ceiling(num);
-                System.out.println(lower_bound == null ? "None" : lower_bound);
+                num = sc.nextInt();
+                Integer higher = new Integer(0);
+                higher = ts.higher(num);
+                System.out.println(higher == null ? "None" : higher);
             } else if (cmd.equals("largest")) {
-                
+                Integer last = new Integer(0);
+                last = ts.last();
+                System.out.pritnln(last == null ? "None" : last);
             } else if (cmd.equals("smallest")) {
-                
+                Integer first = new Integer(0);
+                first = ts.first();
+                System.out.println(first == null ? "None" : first);
             } else {}
         }
 
