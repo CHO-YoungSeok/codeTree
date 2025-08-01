@@ -31,10 +31,18 @@ public class Main {
                 higher = ts.higher(num);
                 System.out.println(higher == null ? "None" : higher);
             } else if (cmd.equals("largest")) {
+                if (ts.isEmpty()) {
+                    System.out.println("None");
+                    continue;
+                }
                 Integer last = new Integer(0);
                 last = ts.last();
-                System.out.pritnln(last == null ? "None" : last);
+                System.out.println(last == null ? "None" : last);
             } else if (cmd.equals("smallest")) {
+                if (ts.isEmpty()) {
+                    System.out.println("None");
+                    continue;
+                }                
                 Integer first = new Integer(0);
                 first = ts.first();
                 System.out.println(first == null ? "None" : first);
