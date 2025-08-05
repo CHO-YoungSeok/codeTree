@@ -27,12 +27,10 @@ public class Main {
         }
         // Please write your code here.
 
-        PriorityQueue<Dot> pq = new PriorityQueue<>((a, b) -> {
-            if ((a.x + a.y) == (b.x + b.y)) {
-                if (a.x == b.x) return a.y - b.y;
-                return a.x - b.x;
-            }
-            return (a.x + a.y)- (b.x + b.y);}
+        PriorityQueue<Dot> pq = new PriorityQueue<>(
+            Comparator.comparingInt((Dot d) -> d.x + d.y)
+                .thenComparingInt(d -> d.x)
+                .thenComparingInt(d -> d.y)
         );
 
         for (int i = 0; i < n; i++) {
