@@ -1,17 +1,14 @@
 import java.util.Scanner;
 import java.util.PriorityQueue;
+import java.util.Comparator;
 
-class Dot implements Comparable<Dot> {
+class Dot {
     int x, y, distance;
 
     Dot(int x, int y) {
         this.x = x;
         this.y = y;
         this.distance = x + y;
-    }
-
-    public int compareTo(Dot d) {
-        return this.distance - d.distance;
     }
 
     void printDot() {
@@ -30,7 +27,9 @@ public class Main {
         }
         // Please write your code here.
 
-        PriorityQueue<Dot> pq = new PriorityQueue<>();
+        PriorityQueue<Dot> pq = new PriorityQueue<>((a, b) -> 
+            (a.x + a.y) - (b.x + b.y)
+        );
 
         for (int i = 0; i < n; i++) {
             pq.add(new Dot(points[i][0], points[i][1]));
