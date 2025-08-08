@@ -1,10 +1,15 @@
 import java.util.*;
 
 class Node {
+    static int totalNode = 0;
+
     Node pre, next = null;
     int id;
-    Node
     
+    Node() {
+        id = ++totalNode;
+    }
+
 }
 
 public class Main {
@@ -27,7 +32,6 @@ public class Main {
                     curr.pre.next = curr.next;
                 if (curr.next != null)
                     curr.next.pre = curr.pre;
-
                 curr.pre = curr.next = null;
             } else if (dir == 2) {
                 Node inode = nodes[sc.nextInt()];
@@ -37,7 +41,7 @@ public class Main {
                 jnode.pre = inode.pre;
                 inode.pre = jnode;
                 if (jnode.pre != null) 
-                    inode.pre.next = jnode;
+                    jnode.pre.next = jnode;
                 
             } else if (dir == 3) {
                 Node inode = nodes[sc.nextInt()];
@@ -65,6 +69,15 @@ public class Main {
                 }
                 
             } else {}
+        }
+
+        for (int i = 1; i < n + 1; i++) {
+            if (nodes[i].next != null) {
+                System.out.print(nodes[i].next.id + " ");
+            } else {
+                System.out.print("0 ");
+            }
+            
         }
 
 
