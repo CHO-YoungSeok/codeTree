@@ -29,7 +29,7 @@ public class Main {
                     sum = Math.max(grid[i][j] + grid[i+1][j] + grid[i][j+1], sum);
                 }
 
-                if (j + 1 < n && j + 2 < m) {
+                if (j + 1 < m && j + 2 < m) {
                     sum = Math.max(grid[i][j] + grid[i][j+1] + grid[i][j+2], sum);
                 }
                 if (i + 1 < n && i + 2 < n) {
