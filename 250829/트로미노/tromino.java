@@ -1,6 +1,40 @@
 import java.util.*;
 
 public class Main {
+
+    static int[][][] shapes = new int [][][] {
+        {
+            {1, 1, 0},
+            {1, 0, 0},
+            {0, 0, 0}
+        },
+        {
+            {1, 1, 0},
+            {0, 1, 0},
+            {0, 0, 0}
+        },
+        {
+            {0, 1, 0},
+            {1, 1, 0},
+            {0, 0, 0}
+        },
+        {
+            {1, 0, 0},
+            {1, 1, 0},
+            {0, 0, 0}
+        },
+        {
+            {1, 1, 1},
+            {0, 0, 0},
+            {0, 0, 0}
+        },
+        {
+            {1, 0, 0},
+            {1, 0, 0},
+            {1, 0, 0}
+        }
+    };
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -11,35 +45,39 @@ public class Main {
                 grid[i][j] = sc.nextInt();
             }
         }
-        // Please write your code here.
-        int sum = 0;
 
+        // Please write your code here.
+        int max = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                if (i - 1 >= 0 && j + 1 < m) {
-                    sum = Math.max(grid[i][j] + grid[i][j+1] + grid[i-1][j], sum);
-                }
-                if (i-1 >= 0 && j-1 >= 0) {
-                    sum = Math.max(grid[i][j] + grid[i-1][j] + grid[i][j-1], sum);
-                }
-                if (i + 1 < n && j-1 >= 0) {
-                    sum = Math.max(grid[i][j] + grid[i+1][j] + grid[i][j-1], sum);
-                }
-                if (i + 1 < n && j + 1 < m) {
-                    sum = Math.max(grid[i][j] + grid[i+1][j] + grid[i][j+1], sum);
-                }
 
-                if (j + 2 < m) {
-                    sum = Math.max(grid[i][j] + grid[i][j+1] + grid[i][j+2], sum);
-                }
-                if (i + 2 < n) {
-                    sum = Math.max(grid[i][j] + grid[i+1][j] + grid[i+2][j], sum);
-                }
+                for (int s = 0; s < 6; s++) {
+                    int sum = 0;
+                    boolean isRight = true;
 
-                // System.out.println(i + ", " + j + ": " + sum);
+                    for (int x = 0; x < 3; x++) {
+                        for (int y = 0; y < 3; y++) {
+                            if (shapes[s][x][y] == 0) continue;
+                            
+                            // if (i + x < 0 || j + y < 0) {
+                            //     System.out.println("hi: " + i + " " + x + " " 
+                            //     + j + ' ' + y);
+                            //     return;
+                            // }
+                            if (i + x < n && j + y < m) {
+                                sum += grid[i + x][j + y];
+                            } else {
+                                isRight = false;
+                            }
+                        }
+                    }
+                    if (isRight)
+                        max = Math.max(max, sum);
+                }             
             }
         }
 
-        System.out.println(sum);
+        System.out.println(max);
+
     }
 }
