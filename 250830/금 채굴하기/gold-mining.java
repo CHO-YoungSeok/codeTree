@@ -17,18 +17,15 @@ public class Main {
 
                 for (int k = 0; k <= 2 * (n - 1); k++) {
                     int sum = 0;
-                    for (int a = 0; a <= k; a++) {
-                        for (int b = 0; b <= k; b++) {
-                            if (Math.abs(a + b) <= k) {
-                                if (i + a < n && j + b < n) {
-                                    sum += grid[i + a][j + b];
-                                }
-                                if (i - a >= 0 && j - b >= 0) {
-                                    sum += grid[i - a][j - b];
-                                }
+                    for (int a = 0; a < n; a++) {
+                        for (int b = 0; b < n; b++) {
+                            if (Math.abs(i - a) + Math.abs(j - b) <= k) {
+                                sum += grid[a][b];
                             }
                         }
                     }
+
+
                     sum -= grid[i][j];
 
                     if (Math.pow(k, 2) + Math.pow(k + 1, 2) <= sum * m) {
