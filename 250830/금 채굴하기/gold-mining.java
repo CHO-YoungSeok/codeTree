@@ -15,7 +15,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
 
-                for (int k = 0; k <= n; k++) {
+                for (int k = 0; k <= 2 * (n - 1); k++) {
                     int sum = 0;
                     for (int a = 0; a <= k; a++) {
                         for (int b = 0; b <= k; b++) {
@@ -39,6 +39,5 @@ public class Main {
         }
 
         System.out.println(max);
-
     }
 }
