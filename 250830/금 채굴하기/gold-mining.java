@@ -25,9 +25,6 @@ public class Main {
                         }
                     }
 
-
-                    sum -= grid[i][j];
-
                     if (Math.pow(k, 2) + Math.pow(k + 1, 2) <= sum * m) {
                         max = Math.max(max, sum);
                     }
