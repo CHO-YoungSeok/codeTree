@@ -16,6 +16,7 @@ public class Main {
         int[] dx = {1, 1, -1, -1};
         int[] dy = {-1, 1, 1, -1};
         int max = 0;
+        int q1 = 0, q2 = 0, q3 = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int sum = grid[i][j];
@@ -37,13 +38,19 @@ public class Main {
 
                         }
                     }
-                    if (sum * m >= Math.pow(k, 2) + Math.pow((k+1), 2)) {
+                    if (sum * m >= k * k + (k+1) * (k+1)) {
                         max = Math.max(max, sum);
+                        if (sum == max) {
+                            q1 = i;
+                            q2 = j;
+                            q3 = k;
+                        }
                     }    
                 }
             }
         }
 
         System.out.println(max);
+        // System.out.println(q1 + ", " + q2 + ", " + q3);
     }
 }
