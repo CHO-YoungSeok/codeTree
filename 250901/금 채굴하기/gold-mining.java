@@ -22,9 +22,6 @@ public class Main {
             for (int j = 0; j < n; j++) {
 
                 int sum = grid[i][j];
-                if (sum * m >= 2) {
-                    max = Math.max(max, sum);
-                }
 
                 for (int k = 1; k <= 2 * (n - 1); k++) {
                     int currX = i - k;
@@ -42,7 +39,7 @@ public class Main {
                             currY += dy[p];
                         }
                     }
-                    if (sum * m >= k * k + (k+1) * (k+1)) {
+                    if (sum * m >= (k * k) + ((k+1) * (k+1))) {
                         max = Math.max(max, sum);
                         if (sum == max) {
                             q1 = i;
