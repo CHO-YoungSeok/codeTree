@@ -15,11 +15,16 @@ public class Main {
         
         int[] dx = {1, 1, -1, -1};
         int[] dy = {-1, 1, 1, -1};
+
         int max = 0;
         int q1 = 0, q2 = 0, q3 = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
+
                 int sum = grid[i][j];
+                if (sum * m >= 2) {
+                    max = Math.max(max, sum);
+                }
 
                 for (int k = 1; k <= 2 * (n - 1); k++) {
                     int currX = i - k;
@@ -35,7 +40,6 @@ public class Main {
                             
                             currX += dx[p];
                             currY += dy[p];
-
                         }
                     }
                     if (sum * m >= k * k + (k+1) * (k+1)) {
