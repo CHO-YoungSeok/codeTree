@@ -5,48 +5,32 @@ public class Main {
     static int n;
     static int[][] grid;
 
-    static int getSum(int r1, int c1, int r2, int c2, int r3, int c3) {
-        int r4 = r3 - (r2 - r1);
-        int c4 = r4 - r1 + c1;
-        int currX = r1;
-        int currY = c1;
+    static int getSum(int i, int j, int k, int l) {
+
         int sum = 0;
+        int[] dx = {1, 1, -1, -1};
+        int[] dy = {-1, 1, 1, -1};
+        int[] moveStep = {k, l, k, l};
 
-        if (
-            0 <= r1 && r1 < n
-            && 0 <= r2 && r2 < n
-            && 0 <= r3 && r3 < n
-            && 0 <= r4 && r4 < n
-            && 0 <= c1 && c1 < n
-            && 0 <= c2 && c2 < n
-            && 0 <= c3 && c3 < n
-            && 0 <= c4 && c4 < n
-        ) {
-            for (int r = r1; r < r2; r++) {                
-                sum += grid[currX][currY];
-                currX++;
-                currY--;
-            }
-            for (int r = r2; r < r3; r++) {
-                sum += grid[currX][currY];
-                currX++;
-                currY++;
-            }
-            for (int r = r3; r4 < r; r--) {
-                sum += grid[currX][currY];
-                currX--;
-                currY++;
-            }
-            for (int r = r4; r1 < r; r--) {
-                sum += grid[currX][currY];
-                currX--;
-                currY--;
-            }
+        int currX = i;
+        int currY = j;
 
-            return sum;
+        for (int dir = 0; dir < 4; dir++) {
+            for (int step = 0; step < moveStep[dir]; step++) {
+                if (
+                    0 <= currX && currX < n
+                    && 0 <= currY && currY < n
+                ) {
+                    sum += grid[currX][currY];
+                    currX += dx[dir];
+                    currY += dy[dir];
+                } else {
+                    return 0;
+                }
+            }
         }
 
-        return 0;
+        return sum;
     }
 
     public static void main(String[] args) {
@@ -62,22 +46,17 @@ public class Main {
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                
-                for (int c1 = j - 1; 0 <= c1; c1--) {
-                    int r1 = j - c1 + i;
-
-                    for (int c2 = c1 + 1; c2 < n - 1; c2++) {
-                        int r2 = c2 - c1 + r1;
-                        int sum = getSum(i, j, r1, c1, r2, c2);
+                for (int k = 1; k < n; k++) {
+                    for (int l = 1; l < n; l++) {
+                        int sum = getSum(i,j,k,l);
                         // if (sum > max) {
-                        //     System.out.println(i + " " + j + " " + r1 + " " + c1
-                        //         + " " +  r2 + " " + c2);
+                        //     System.out.println(
+                        //         i + " " + j + " " + k + " " + l
+                        //     );
                         // }
-                        max = Math.max(max, sum);
-                       
-
+                        max = Math.max(max, sum);             
                     }
-                }              
+                }                       
             }
         }
 
