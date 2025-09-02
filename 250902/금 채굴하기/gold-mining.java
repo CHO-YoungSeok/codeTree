@@ -12,6 +12,7 @@ public class Main {
         int currX = r - k;
         int currY = c;
         int sum = 0;
+
         for (int dir = 0; dir < 4; dir++) {
             for (int step = 0; step < k; step++) {
                 if (
@@ -44,7 +45,7 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 int sum = 0;
 
-                for (int k = 0; k < 2 * (n - 1); k++) {
+                for (int k = 0; k <= 2 * (n - 1); k++) {
                     sum += getGoldNum(grid, i, j, k);
 
                     if (sum * m >= Math.pow(k, 2) + Math.pow(k+1, 2)) {
