@@ -20,7 +20,7 @@ public class Main {
                 int sum = grid[i][j];
                 max = Math.max(max, sum);
 
-                for (int k = 1; k <= 2 * (n - 1); k++) {
+                for (int k = 1; k <= n; k++) {
                     int currX = i - k;
                     int currY = j;
                     for (int dir = 0; dir < 4; dir++) {
