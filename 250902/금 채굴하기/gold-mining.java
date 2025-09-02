@@ -18,6 +18,7 @@ public class Main {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 int sum = grid[i][j];
+                max = Math.max(max, sum);
 
                 for (int k = 1; k <= 2 * (n - 1); k++) {
                     int currX = i - k;
