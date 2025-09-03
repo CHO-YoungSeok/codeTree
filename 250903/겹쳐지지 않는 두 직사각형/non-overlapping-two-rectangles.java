@@ -37,7 +37,7 @@ public class Main {
             }
         }
         // Please write your code here.
-        int max = 0;
+        int max = Integer.MIN_VALUE;
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
