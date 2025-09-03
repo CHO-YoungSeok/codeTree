@@ -38,7 +38,7 @@ public class Main {
         }
 
         // Please write your code here.
-        int max = grid[0][0];
+        int max = grid[0][0] + grid[0][1];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
