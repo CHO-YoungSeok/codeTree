@@ -36,8 +36,9 @@ public class Main {
                 grid[i][j] = sc.nextInt();
             }
         }
+
         // Please write your code here.
-        int max = Integer.MIN_VALUE;
+        int max = grid[0][0];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
@@ -71,6 +72,5 @@ public class Main {
         }
 
         System.out.println(max);
-
     }
 }
