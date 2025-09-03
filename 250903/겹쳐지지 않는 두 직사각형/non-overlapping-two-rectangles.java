@@ -50,7 +50,8 @@ public class Main {
                                 for (int k2 = 0; k2 < n; k2++) {
                                     for (int l2 = 0; l2 < m; l2++) {
                                         if (
-                                            i + k < i2 || j + l < j2
+                                            i + k < n && j + l < m
+                                            && (i + k < i2 || j + l < j2)
                                         ) {
                                             int sum1 = getSum(i, j, k, l);
                                             int sum2 = getSum(i2, j2, k2, l2);
