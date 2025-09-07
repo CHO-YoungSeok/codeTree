@@ -1,4 +1,7 @@
-import java.util.Scanner;
+import java.util.*;
+import java.util.stream.*;
+
+
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -14,32 +17,26 @@ public class Main {
         }
         // Please write your code here.
 
-        int[] arr = new int[2 * n];
+        int[] arr = IntStream.concat(Arrays.stream(top), Arrays.stream(bottom)).toArray();
 
-        for (int i = 0; i < n; i++) {
-            arr[i] = top[i];
-        }
+        int len = 2 * n;
+        int shiftCount = t % len;
 
-        for (int i = 0; i < n; i++) {
-            arr[n + i] = bottom[i];
-        }
+        int[] rotated = IntStream.range(0, 2 * n)
+            .map(i -> arr[(len - shiftCount + i) % len])
+            .toArray();
 
-        for (int p = 0; p < t; p++) {
-            int temp = arr[2 * n - 1];
-            for (int i = 2 * n - 1; 0 < i; i--) {
-                arr[i] = arr[i - 1];
-            }
-            arr[0] = temp;
-        }
-
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i] + " ");
-        }
-
+        IntStream.range(0, n)
+            .map(i -> rotated[i])
+            .forEach(e -> System.out.print(e + " "));
+        
         System.out.println();
 
-        for (int i = 0; i < n; i++) {
-            System.out.print(arr[i + n] + " ");
-        } 
+        IntStream.range(n, len)
+            .map(i -> rotated[i])
+            .forEach(e -> System.out.print(e + " "));
+
+
+
     }
 }
