@@ -17,7 +17,7 @@ while isFirst or preCount != len(numbers):
         
         # m개 이상 연속이면 제거
         if consecution >= m:
-            numbers = numbers[:i] + numbers[i + consecution :]
+            del numbers[i:i + consecution]
         else:
             i += 1
 
