@@ -1,4 +1,9 @@
-grid = [list(map(int, input().split()))]
+grid = [list(map(int, input().split())) for _ in range(4)]
+dir = str(input())
 
-for row in grid :
-    print(' '.join(row))
+print('\n'.join(map(str, grid)))
+
+if dir == "R" :
+
+elif dir == "L" :
+    
