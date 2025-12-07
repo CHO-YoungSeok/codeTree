@@ -1,24 +1,25 @@
-n, m  = map(int, input().split())
+n, m = map(int, input().split())
 numbers = [int(input()) for _ in range(n)]
 
+preLen = n
 isFirst = True
-preCount = n
 
-while isFirst or preCount != len(numbers) :
+while isFirst or preLen != len(numbers) :
     isFirst = False
-    preCount = len(numbers)
+    preLen = len(numbers)
     i = 0
-    
+
     while i < len(numbers) :
         consecutation = 1
-        while i + consecutation < len(numbers) and numbers[i] == numbers[i + consecutation] :
+
+        while i + consecutation < len(numbers) and numbers[i + consecutation] == numbers[i] :
             consecutation += 1
 
         if consecutation >= m :
-            del numbers[i : i + consecutation]
+            del numbers[i:i+consecutation]
         else :
-            i += 1
+            i += consecutation
 
 print(len(numbers))
-for num in numbers : 
+for num in numbers :
     print(num)
