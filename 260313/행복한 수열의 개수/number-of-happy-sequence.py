@@ -3,14 +3,14 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 
 def log(msg):
     # print(msg)
-    return
-    
+    pass
+
 
 count_happy = 0
 for i in range(n):
     seq = 1
-    for c in range(1, n):
-        if grid[i][c-1] == grid[i][c]:
+    for c in range(n - 1):
+        if grid[i][c+1] == grid[i][c]:
            seq += 1
         else:
             seq = 1
@@ -22,8 +22,8 @@ for i in range(n):
 
 for i in range(n):
     seq = 1
-    for r in range(1, n):
-        if grid[r - 1][i] == grid[r][i]:
+    for r in range(n - 1):
+        if grid[r + 1][i] == grid[r][i]:
            seq += 1
         else:
             seq = 1
