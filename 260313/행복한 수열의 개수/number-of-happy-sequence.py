@@ -1,9 +1,10 @@
 n, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 
-def log(str):
-    # print(str)
+def log(msg):
+    # print(msg)
     return
+    
 
 count_happy = 0
 for i in range(n):
