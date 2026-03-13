@@ -47,7 +47,7 @@ index= [
 max_sum = 0
 
 for r in range(n):
-    for c in range(n):
+    for c in range(m):
         for s in range(len(shape)):
             sum = 0
             for x in range(3):
@@ -56,7 +56,7 @@ for r in range(n):
                     yy = c + index[y]
                     if (shape[s][x][y] == 1
                         and 0 <= xx and xx < n  
-                        and 0 <= yy and yy < n):
+                        and 0 <= yy and yy < m):
 
                         sum += grid[xx][yy]
         
