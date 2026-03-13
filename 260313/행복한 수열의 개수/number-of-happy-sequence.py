@@ -1,3 +1,5 @@
+import sys
+
 n, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 
@@ -5,6 +7,10 @@ def log(msg):
     # print(msg)
     pass
 
+if n == 1 or m == 1:
+    print(2 * n)
+    sys.exit()
+    
 
 count_happy = 0
 for i in range(n):
