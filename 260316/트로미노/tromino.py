@@ -6,17 +6,34 @@ def log(msg):
     # print(msg)
     pass
 
-shapes = [
+
+def normalize(shape):
+    min_r = min(r for r, c in shape)
+    min_c = min(c for r, c in shape)
+    return tuple(sorted([(r - min_r, c - min_c) for r, c in shape]))
+
+origin_shapes = [
     [(0,0), (0,1), (0,2)],
-    [(0,0), (1,0), (2,0)],
+    # [(0,0), (1,0), (2,0)],
 
     [(0,0), (1,0), (1,1)],
-    [(0,1), (1,0), (1,1)],
-    [(0,0), (0,1), (1,1)],
-    [(0,0), (1,0), (0,1)],
+    # [(0,1), (1,0), (1,1)],
+    # [(0,0), (0,1), (1,1)],
+    # [(0,0), (1,0), (0,1)],
 ]
 
+shapes = []
 max_sum = 0
+
+for ori_shape in origin_shapes:
+    sh_set = set()
+    curr = ori_shape
+    for _ in range(4):
+        curr = normalize([(c, -r) for r, c in curr])
+        sh_set.add(curr)
+    
+    shapes.extend([list(v) for v in sh_set])
+
 
 for r in range(n):
     for c in range(m):
