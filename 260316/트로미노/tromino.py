@@ -41,11 +41,49 @@ di_x = [
     [0, 0, 0],
     [1, 1, 1],
 ]
+di_y = [
+    [-1, 0, 1],
+    [-1, 0, 1],
+    [-1, 0, 1],
+]
 
+def log(msg):
+    # print(msg)
+    pass
 
+max_sum = 0
 
 for r in range(n):
     for c in range(m):
         for shape_i in range(len(shape)):
-            is_true = False
+            sum = 0
+            is_valid = True
+            for xi in range(3):
+                for yi in range(3):
+                    xx = r + xi
+                    yy = c + yi
+                    if (shape[shape_i][xi][yi] == 1):
+                        if xx >= n or yy >= m :
+                            is_valid = False
+                            continue
+
+                        sum += grid[xx][yy]
+
+            if is_valid == True and max_sum < sum:
+                max_sum = sum
+                log(f'{r} {c} {sum}')
+
+
+print(max_sum)
+
+
+
+            
+                    
+                    
+                    
+
+                    
+
+
 
