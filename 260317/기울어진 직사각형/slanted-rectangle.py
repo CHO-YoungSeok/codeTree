@@ -12,12 +12,12 @@ def in_range(x, y):
     return 0 <= x and x < n and 0 <= y and y < n
 
 def get_sum(r, c, w, h) -> int:
-    dr = [-1, -1, 1, 1]
-    dc = [1, -1, -1, 1]
-    move_len = [w, h, w, h]
+    drs = [-1, -1, 1, 1]
+    dcs = [1, -1, -1, 1]
+    move_lens = [w, h, w, h]
     sum = 0
 
-    for dr, dc, move_len in zip(dr, dc, move_len):
+    for dr, dc, move_len in zip(drs, dcs, move_lens):
         for _ in range(move_len):
             r += dr
             c += dc
