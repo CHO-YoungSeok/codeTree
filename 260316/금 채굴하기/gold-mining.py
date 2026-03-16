@@ -7,7 +7,7 @@ max_gold: int = 0
 
 for r in range(n):
     for c in range(n):
-        for k in range(1, n):
+        for k in range(0, n):
             gold_count = 0
             for rr in range(n):
                 for cc in range(n):
