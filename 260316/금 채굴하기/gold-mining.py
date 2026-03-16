@@ -11,7 +11,7 @@ for r in range(n):
             gold_count = 0
             for rr in range(n):
                 for cc in range(n):
-                    if abs(r - rr) + abs(c -cc) <= k and grid[rr][cc] == 1:
+                    if grid[rr][cc] == 1 and abs(r - rr) + abs(c -cc) <= k:
                         gold_count += 1
             if gold_count * m >= pow(k, 2) + pow(k+1, 2):
                 max_gold = max(max_gold, gold_count)
