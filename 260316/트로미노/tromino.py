@@ -6,50 +6,45 @@ def log(msg):
     # print(msg)
     pass
 
-
-def normalize(shape):
-    min_r = min(r for r, c in shape)
-    min_c = min(c for r, c in shape)
-    return tuple(sorted([(r - min_r, c - min_c) for r, c in shape]))
-
-origin_shapes = [
-    [(0,0), (0,1), (0,2)],
-    # [(0,0), (1,0), (2,0)],
-
-    [(0,0), (1,0), (1,1)],
-    # [(0,1), (1,0), (1,1)],
-    # [(0,0), (0,1), (1,1)],
-    # [(0,0), (1,0), (0,1)],
+origin_shape = [
+    [(0,0), (1,0), (2,0)],
+    [(0,0), (1,0), (0,1)],
 ]
 
-shapes = []
-max_sum = 0
+shape_set = set()
+for shape in origin_shape:
+    rotated_shape = shape
 
-for ori_shape in origin_shapes:
-    sh_set = set()
-    curr = ori_shape
     for _ in range(4):
-        curr = normalize([(c, -r) for r, c in curr])
-        sh_set.add(curr)
-    
-    shapes.extend([list(v) for v in sh_set])
+        rotated_shape = [(c, -r) for r, c in rotated_shape]
+        min_r = min(r for r, c in rotated_shape)
+        min_c = min(c for r, c in rotated_shape)
+        rotated_shape = [(r - min_r, c - min_c) for r, c in rotated_shape]
+        shape_set.add(tuple(sorted(rotated_shape)))
 
+log(shape_set)
+log(len(shape_set))
+
+max_sum = 0
 
 for r in range(n):
     for c in range(m):
-        for shape in shapes:
+        for shape in shape_set:
             sum = 0
             for dr, dc in shape:
                 rr = r + dr
                 cc = c + dc
-                if 0 <= rr and rr < n and 0 <= cc and cc < m:
+                if rr < n and cc < m:
                     sum += grid[rr][cc]
                 else:
                     sum = -1
-                    break
-            
+                    break;
+
             if max_sum < sum:
                 max_sum = sum
-                log(f'{r} {c} {max_sum}')
+                log(f'{sum} {r} {c} {rr} {cc}')
 
 print(max_sum)
+
+
+        
