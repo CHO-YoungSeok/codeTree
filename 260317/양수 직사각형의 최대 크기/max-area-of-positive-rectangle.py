@@ -3,32 +3,19 @@ grid = [list(map(int, input().split())) for _ in range(n)]
 
 # Please write your code here.
 
+def check(start_x, start_y, i, j):
+    for x in range(start_x, start_x + i + 1):
+        for y in range(start_y, start_y + j + 1):
+            if grid[x][y] <= 0:
+                return False
+    return True
 
-def get_size(r, c, dr, dc):
-    for ri in range(dr):
-        for ci in range(dc):
-            rr = r + ri 
-            cc = c + ci 
-            if 0 <= rr and rr < n and 0 <= cc and cc < m  \
-                and grid[rr][cc] > 0:
+answer = -1
+for x in range(n):
+    for y in range(m):
+        for i in range(n - x):
+            for j in range(m - y):
+                if check(x, y, i, j):
+                    answer = max(answer, (i + 1) * (j + 1))
 
-                continue
-            else:
-                return -1
-    return (dr) * (dc)
-
-max_size = 0
-for r in range(n):
-    for c in range(m):
-        for dr in range(1, n-r+1):
-            for dc in range(1, m-c+1):
-                curr_size = get_size(r, c, dr, dc)
-                max_size = max(max_size, curr_size)
-
-print(max_size)
-                
-                        
-                            
-
-
-            
+print(answer)
