@@ -57,6 +57,12 @@ else:
         a[rr][cc] = a[next_r][next_c]
         rr = next_r
         cc = next_c
+    for _ in range(m4-1):
+        next_r = rr +1
+        next_c = cc +1
+        a[rr][cc] = a[next_r][next_c]
+        rr = next_r
+        cc = next_c
 
     a[r-1][c-1] = temp
 
