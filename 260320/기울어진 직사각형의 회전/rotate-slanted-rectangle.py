@@ -1,5 +1,5 @@
 n = int(input())
-a = [list(map(int, input().split())) for _ in range(n)]
+grid = [list(map(int, input().split())) for _ in range(n)]
 r, c, m1, m2, m3, m4, dir = map(int, input().split())
 
 # Please write your code here.
@@ -8,67 +8,34 @@ r -= 1
 c -= 1
 rr = r
 cc = c
+dr = []
+dc = []
 
+import copy
+temp = copy.deepcopy(grid)
 if dir == 0:
-    temp = a[r][c]
-    for _ in range(m4):
-        next_r = rr -1
-        next_c = cc - 1
-        a[rr][cc] = a[next_r][next_c]
-        rr = next_r
-        cc = next_c
-    for _ in range(m3):
-        next_r = rr - 1
-        next_c = cc + 1
-        a[rr][cc] = a[next_r][next_c]
-        rr = next_r
-        cc = next_c
-    for _ in range(m2):
-        next_r = rr + 1
-        next_c = cc + 1
-        a[rr][cc] = a[next_r][next_c]
-        rr = next_r
-        cc = next_c
-    for _ in range(m1 - 1):
-        next_r = rr + 1
-        next_c = cc - 1
-        a[rr][cc] = a[next_r][next_c]
-        rr = next_r
-        cc = next_c
-    a[r-1][c+1] = temp  
-    
+    dr = [-1, -1, 1, 1]
+    dc = [-1, 1, 1, -1]
+    dis = [m4, m3, m2, m1]
 else:
-    temp = a[r][c]
-    for _ in range(m1):
-        next_r = rr -1
-        next_c = cc + 1
-        a[rr][cc] = a[next_r][next_c]
-        rr = next_r
-        cc = next_c
-    for _ in range(m2):
-        next_r = rr -1
-        next_c = cc -1
-        a[rr][cc] = a[next_r][next_c]
-        rr = next_r
-        cc = next_c
-    for _ in range(m3):
-        next_r = rr +1
-        next_c = cc -1
-        a[rr][cc] = a[next_r][next_c]
-        rr = next_r
-        cc = next_c
-    for _ in range(m4-1):
-        next_r = rr +1
-        next_c = cc +1
-        a[rr][cc] = a[next_r][next_c]
-        rr = next_r
-        cc = next_c
-
-    a[r-1][c-1] = temp
+    dr = [-1, -1, 1, 1]
+    dc = [1, -1, -1, 1]
+    dis = [m1, m2, m3, m4]
 
 
-for row in a:
+for p in range(4):
+    for _ in range(dis[p]):
+        next_r = rr + dr[p]
+        next_c = cc + dc[p]
+        # print(f'log {rr} {cc} {next_r} {next_c} {temp[rr][cc]} {grid[next_r][next_c]}')
+        temp[rr][cc] = grid[next_r][next_c]
+        rr = next_r
+        cc = next_c
+        
+
+
+grid = list(temp)
+for row in grid:
     for cell in row:
-        print(f'{cell}', end=" ")
+        print(cell, end =" ")
     print()
-
