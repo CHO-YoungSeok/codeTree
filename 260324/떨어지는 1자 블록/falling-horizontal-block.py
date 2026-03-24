@@ -2,20 +2,21 @@ n, m, k = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 
 # Please write your code here.
-
 k -= 1
-def get_highest_row(r, c):
+
+def get_break_r(m, k):
+    global grid
+
     for rr in range(1, n):
         for cc in range(k, k+m):
-            if grid[rr][cc] == 1:
-                return rr
-    return n
+            if grid[rr][cc] != 0:
+                return rr - 1
+    return n - 1
 
+break_r = get_break_r(m, k)
 
-rr = get_highest_row(m, k) - 1
-
-for c in range(k, k+m):
-    grid[rr][c] = 1
+for cc  in range(k, k+m):
+    grid[break_r][cc] = 1
 
 for row in grid:
     for cell in row:
