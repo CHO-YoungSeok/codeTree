@@ -2,20 +2,20 @@ n = int(input())
 grid = [list(map(int, input().split())) for _ in range(n)]
 
 def log(msg):
-    print(msg)
+    # print(msg)
     pass
 
 # Please write your code here.
 combos = []
 combo = []
 bombs = []
-log(combos)
+# log(combos)
 
 for r in range(n):
     for c in range(n):
         if grid[r][c] == 1:
             bombs.append((r, c))
-log(f'bombs: {bombs} len = {len(bombs)}')
+# log(f'bombs: {bombs} len = {len(bombs)}')
 
 def choose(n):
     if n == len(bombs):
@@ -33,20 +33,21 @@ ds = [
     ([-1, -1, 1, 1, 0], [-1, 1, 1, -1, 0])
 ]
 choose(0)
-log(f'combos: {combos}')
-log(f'ds: {ds}')
+# log(f'combos: {combos}')
+# log(f'ds: {ds}')
 
 max_answer = 0
 for combo in combos:
     killed_set = set()
-    for r, c in bombs:
-        for dr, dc in ds:
-            for i in range(len(dr)):
-                log(f'len(dr): {len(dr)}')
-                rr = r + dr[i]
-                cc = c + dc[i]
-                if 0 <= min(rr, cc) and max(rr, cc) < n:
-                    killed_set.add((rr, cc))
+    for idx, (r, c) in enumerate(bombs):
+        dr, dc = ds[combo[idx]]
+        for i in range(5):
+            # log(f'len(dr): {len(dr)}')
+            rr = r + dr[i]
+            cc = c + dc[i]
+            if 0 <= min(rr, cc) and max(rr, cc) < n:
+                killed_set.add((rr, cc))
     max_answer = max(max_answer, len(killed_set))
+    # log(f'max_answer: {max_answer}, set: {killed_set}')
 
 print(max_answer)
