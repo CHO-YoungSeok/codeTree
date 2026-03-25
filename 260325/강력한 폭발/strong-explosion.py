@@ -9,13 +9,11 @@ def log(msg):
 combos = []
 combo = []
 bombs = []
-# log(combos)
 
 for r in range(n):
     for c in range(n):
         if grid[r][c] == 1:
             bombs.append((r, c))
-# log(f'bombs: {bombs} len = {len(bombs)}')
 
 def choose(n):
     if n == len(bombs):
@@ -28,13 +26,12 @@ def choose(n):
         combo.pop()
 
 ds = [
-    ([-2, -1, 0, 1, 1], [0, 0, 0, 0, 0]),
+    ([-2, -1, 0, 1, 2], [0, 0, 0, 0, 0]),
     ([-1, 0, 1, 0, 0], [0, 1, 0, -1, 0]),
     ([-1, -1, 1, 1, 0], [-1, 1, 1, -1, 0])
 ]
 choose(0)
-# log(f'combos: {combos}')
-# log(f'ds: {ds}')
+
 
 max_answer = 0
 for combo in combos:
