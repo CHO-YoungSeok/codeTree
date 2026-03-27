@@ -15,7 +15,7 @@ A = list(map(int, input().split()))
 # 0111 
 
 def log(msg):
-    # print(msg)
+    print(msg)
     pass
 
 nums = []
@@ -63,7 +63,7 @@ def get_score():
     for i in range(max_size):
         is_xor_true = False
         for bi in binaries:
-            if len(bi) > i and bi[i] == 1:
+            if len(bi) > i and bi[-i-1] == 1:
                 is_xor_true = True if not is_xor_true else False
         
         if is_xor_true:
