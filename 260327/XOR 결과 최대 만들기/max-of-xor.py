@@ -15,7 +15,7 @@ A = list(map(int, input().split()))
 # 0111 
 
 def log(msg):
-    print(msg)
+    # print(msg)
     pass
 
 nums = []
@@ -60,6 +60,7 @@ def get_score():
         binaries.append(binary_nums[num])
         max_size = max(max_size, len(binary_nums[num]))
     
+    log(f'max_size: {max_size}')
     for i in range(max_size):
         is_xor_true = False
         for bi in binaries:
