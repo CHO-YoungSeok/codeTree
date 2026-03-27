@@ -15,7 +15,7 @@ A = list(map(int, input().split()))
 # 0111 
 
 def log(msg):
-    # print(msg)
+    print(msg)
     pass
 
 nums = []
@@ -26,8 +26,8 @@ def choose(curr_n):
     global max_score
 
     if curr_n == m:
-        score = get_score()
-        max_score = max(max_score, score)
+        max_score = max(max_score, get_score())
+        log(get_score)
         return
     
     for k in range(n):
