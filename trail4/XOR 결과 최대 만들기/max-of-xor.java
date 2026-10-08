@@ -1,35 +1,22 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
     static int n, m, maxXOR;
-    static boolean[] visited;
     static int[] A;
 
-    public static int calcXOR() {
-        int val = 0;
-        for (int i = 0; i < n; i++) {
-            if (visited[i]) {
-                val ^= A[i];
-            }
-        }
-        return val;
-    }
-
-    public static void choose(int currIdx, int size) {
+    static void choose(int currIdx, int size, int sumXOR) {
         if (size == m) {
-            maxXOR = Math.max(maxXOR, calcXOR());
+            maxXOR = Math.max(maxXOR, sumXOR);
+            return;
+        }
+        if (currIdx == n || m - size > n - currIdx) {
             return;
         }
 
-        if (currIdx == n) {
-            return;
-        }
-
-        choose(currIdx + 1, size);
-        visited[currIdx] = true;
-        choose(currIdx + 1, size + 1);
-        visited[currIdx] = false;
+        choose(currIdx + 1, size, sumXOR);
+        choose(currIdx + 1, size + 1, sumXOR ^ A[currIdx]);
     }
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -40,8 +27,7 @@ public class Main {
             A[i] = sc.nextInt();
         }
         // Please write your code here.
-        visited = new boolean[n];
-        choose(0, 0);
+        choose(0, 0, 0);
         System.out.println(maxXOR);
     }
 }
