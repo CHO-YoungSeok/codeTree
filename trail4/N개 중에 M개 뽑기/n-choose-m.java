@@ -1,41 +1,32 @@
-import java.util.Scanner;
 import java.util.*;
 
 public class Main {
-    static int N, M;
-    static Deque<Integer> stack = new ArrayDeque<>();
-    static List<List<Integer>> answer = new ArrayList<>();
-
-    public static void choose(int size) {
-        if (size == M) {
-            answer.add(new ArrayList<>(stack));
+    static int n, m;
+    static List<Integer> list = new ArrayList<>();
+    
+    static void choose(int currNum, int size) {
+        if (size == m) {
+            for (int i = 0; i < m; i++) {
+                System.out.print(list.get(i) + " ");
+            }
+            System.out.println();
+        }
+        if (currNum > n || m - size > n - currNum) {
             return;
         }
-
-        for (int k = 1; k < N +1; k++) {
-            if (stack.isEmpty()
-                    || (!stack.isEmpty() && k > stack.peek())) {
-                stack.push(k);
-                // System.out.println("log: " + k);
-                choose(size+1);
-                stack.pop();
-            }
+        for (int i = currNum + 1; i <= n; i++) {
+            list.add(i);
+            choose(i, size + 1);
+            list.remove(list.size() - 1);
         }
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
+        n = sc.nextInt();
+        m = sc.nextInt();
         // Please write your code here.
+        choose(0, 0);        
 
-        N = n; M = m;
-        choose(0);
-        for (int i = 0;  i < answer.size(); i++) {
-            for (int k = answer.get(i).size() - 1; 0 <= k; k--) {
-                System.out.print(answer.get(i).get(k) + " ");
-            }
-            System.out.println();
-        }
     }
 }
