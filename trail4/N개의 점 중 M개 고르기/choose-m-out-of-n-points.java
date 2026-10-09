@@ -4,7 +4,7 @@ public class Main {
     static int n, m;
     static double minDis = Double.MAX_VALUE;
     static int[][] points;
-    static List<int[]> picks = new ArrayList<>();
+    static List<int[]> pickedPoints = new ArrayList<>();
 
     static void choose(int currIdx, int size) {
         if (size == m) {
@@ -12,8 +12,8 @@ public class Main {
             double dis = 0;
             for (int k = 0; k < m - 1; k++) {
                 for (int l = k + 1; l < m; l++) {
-                    dis = Math.pow(Math.abs(picks.get(k)[0] - picks.get(l)[0]), 2)
-                            + Math.pow(Math.abs(picks.get(k)[1] - picks.get(l)[1]), 2);
+                    dis = Math.pow(pickedPoints.get(k)[0] - pickedPoints.get(l)[0], 2)
+                            + Math.pow(pickedPoints.get(k)[1] - pickedPoints.get(l)[1], 2);
                     currMaxDis = Math.max(currMaxDis, dis);
                 }
             }
@@ -24,9 +24,9 @@ public class Main {
             return;
         }
 
-        picks.add(points[currIdx]);
+        pickedPoints.add(points[currIdx]);
         choose(currIdx+1, size +1);
-        picks.remove(picks.size() - 1);
+        pickedPoints.remove(pickedPoints.size() - 1);
 
         choose(currIdx+1, size);
     }
