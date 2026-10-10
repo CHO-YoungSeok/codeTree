@@ -4,24 +4,21 @@ public class Main {
     static int n, m;
     static int[] arr;
     static int getMinIdx(int target) {
-        int mid = 0, low = 0, high = n-1, minIdx = Integer.MAX_VALUE;
+        int mid = 0, low = 0, high = n-1;
         while (high >= low) {
             mid = low + (high - low) / 2;
 
             if (arr[mid] >= target) {
                 high = mid - 1;
-                minIdx = Math.min(minIdx, mid);
             } else {
                 low = mid + 1;
             }
         }
 
-        if ((minIdx < 0 || minIdx >= arr.length) || arr[minIdx] != target) {
+        if (low < arr.length && arr[low] == target)
+            return low + 1;
+        else
             return -1;
-        } else {
-            return minIdx + 1;
-        }
-        
     }
 
     public static void main(String[] args) {
