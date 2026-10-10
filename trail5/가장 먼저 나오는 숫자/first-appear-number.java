@@ -1,0 +1,45 @@
+import java.util.*;
+public class Main {
+
+    static int n, m;
+    static int[] arr;
+    static int getMinIdx(int target) {
+        int mid = 0, low = 0, high = n-1, minIdx = Integer.MAX_VALUE;
+        while (high >= low) {
+            mid = low + (high - mid) / 2;
+
+            if (arr[mid] >= target) {
+                high = mid - 1;
+                minIdx = Math.min(minIdx, mid);
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        if ((minIdx < 0 || minIdx >= arr.length) || arr[minIdx] != target) {
+            return -1;
+        } else {
+            return minIdx + 1;
+        }
+        
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        m = sc.nextInt();
+        arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        int[] queries = new int[m];
+        for (int i = 0; i < m; i++) {
+            queries[i] = sc.nextInt();
+        }
+        // Please write your code here.
+        for (int i = 0; i < m; i++) {
+            System.out.println(getMinIdx(queries[i]));
+        }
+
+    }
+}
