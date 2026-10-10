@@ -6,7 +6,7 @@ public class Main {
     static int getMinIdx(int target) {
         int mid = 0, low = 0, high = n-1, minIdx = Integer.MAX_VALUE;
         while (high >= low) {
-            mid = low + (high - mid) / 2;
+            mid = low + (high - low) / 2;
 
             if (arr[mid] >= target) {
                 high = mid - 1;
