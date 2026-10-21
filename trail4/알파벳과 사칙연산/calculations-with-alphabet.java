@@ -1,46 +1,52 @@
-import java.util.*;
-
+import java.util.Scanner;
 public class Main {
-    static int[] val = new int[6];   // a~f 각각에 대입할 값
+    static int opsSize, charsSize, pickedSize;
     static char[] ops;
-    static int[] nums;
-    static int max = Integer.MIN_VALUE;
+    static char[] chars;
+    static int[] picked = new int['f' - 'a' + 1];
+    static int head = 0, max = Integer.MIN_VALUE;
 
-    static int calc() {
-        int result = val[nums[0]];
-        for (int i = 1; i < nums.length; i++) {
-            int v = val[nums[i]];
-            switch (ops[i - 1]) {
-                case '*': result *= v; break;
-                case '+': result += v; break;
-                case '-': result -= v; break;
+    static void dfs(int curr) {
+        if (curr == pickedSize) {
+            char c = chars[0];
+            int result = picked[c - 'a'];
+            for (int i = 1; i < charsSize; i++) {
+                c = chars[i];
+                switch (ops[i-1]) {
+                    case '*': result *= picked[c - 'a']; break;
+                    case '/': result /= picked[c - 'a']; break;
+                    case '+': result += picked[c - 'a']; break;
+                    case '-': result -= picked[c - 'a']; break;
+                }
             }
-        }
-        return result;
-    }
-
-    static void dfs(int idx) {
-        if (idx == 6) {
-            max = Math.max(max, calc());
+            max = Math.max(max, result);
             return;
         }
+
         for (int i = 1; i <= 4; i++) {
-            val[idx] = i;
-            dfs(idx + 1);
+            picked[head++] = i;
+            dfs(curr + 1);
+            head--;
         }
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String expression = sc.next();
+        // Please write your code here.
         int n = expression.length();
+        chars = new char[n/2+1];
+        ops = new char[n/2];
+        opsSize = ops.length;
+        charsSize = chars.length;
+        pickedSize = picked.length;
 
-        ops = new char[n / 2];
-        nums = new int[n / 2 + 1];
-
-        for (int i = 1; i < n; i += 2) ops[i / 2] = expression.charAt(i);
-        for (int i = 0; i < n; i += 2) nums[i / 2] = expression.charAt(i) - 'a';
-
+        chars[0] = expression.charAt(0);
+        for (int i = 1; i < n - 1; i += 2) {
+            ops[i/2] = expression.charAt(i);
+            chars[(i+1)/2] = expression.charAt(i+1);
+        }
+    
         dfs(0);
         System.out.println(max);
     }
