@@ -7,7 +7,7 @@ public class Main {
     static int n, m;
     static double minDis = 200001;
 
-    static void pick(int curr) {
+    static void pick(int curr, int start) {
         if (curr == m) {
             double maxDis = 0;
             for (int i = 0; i < m-1; i++) {
@@ -15,16 +15,16 @@ public class Main {
                     double dis = Math.pow((points[picked[i]][0] - points[picked[j]][0]), 2)
                                 + Math.pow((points[picked[i]][1] - points[picked[j]][1]), 2);
                     maxDis = Math.max(maxDis, dis);
+                    if (maxDis >= minDis) return;
                 }
             }
             minDis = Math.min(minDis, maxDis);
             return;
         }
 
-        for (int i = 0; i < n; i++) {
-            if (curr != 0 && !(picked[curr - 1] < i)) continue;
+        for (int i = start; i < n; i++) {
             picked[curr] = i;
-            pick(curr + 1);
+            pick(curr + 1, i + 1);
         }
     }
 
@@ -40,7 +40,7 @@ public class Main {
         }
         // Please write your code here.
 
-        pick(0);
+        pick(0, 0);
         System.out.println(String.format("%.0f", minDis));
     }
 }
