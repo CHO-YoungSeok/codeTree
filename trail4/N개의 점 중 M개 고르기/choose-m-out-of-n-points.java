@@ -12,8 +12,8 @@ public class Main {
             double maxDis = 0;
             for (int i = 0; i < m-1; i++) {
                 for (int j = i+1; j < m; j++) {
-                    double dis = (points[picked[i]][0] - points[picked[j]][0]) * (points[picked[i]][0] - points[picked[j]][0])
-                                + (points[picked[i]][1] - points[picked[j]][1]) * (points[picked[i]][1] - points[picked[j]][1]);
+                    double dis = Math.pow((points[picked[i]][0] - points[picked[j]][0]), 2)
+                                + Math.pow((points[picked[i]][1] - points[picked[j]][1]), 2);
                     maxDis = Math.max(maxDis, dis);
                 }
             }
