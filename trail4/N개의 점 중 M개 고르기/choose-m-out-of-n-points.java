@@ -1,34 +1,31 @@
 import java.util.*;
 
 public class Main {
-    static int n, m;
-    static double minDis = Double.MAX_VALUE;
-    static int[][] points;
-    static List<int[]> pickedPoints = new ArrayList<>();
 
-    static void choose(int currIdx, int size) {
-        if (size == m) {
-            double currMaxDis = 0;
-            double dis = 0;
-            for (int k = 0; k < m - 1; k++) {
-                for (int l = k + 1; l < m; l++) {
-                    dis = Math.pow(pickedPoints.get(k)[0] - pickedPoints.get(l)[0], 2)
-                            + Math.pow(pickedPoints.get(k)[1] - pickedPoints.get(l)[1], 2);
-                    currMaxDis = Math.max(currMaxDis, dis);
+    static int[][] points;
+    static int[] picked;
+    static int n, m;
+    static double minDis = 200001;
+
+    static void pick(int curr) {
+        if (curr == m) {
+            double maxDis = 0;
+            for (int i = 0; i < m-1; i++) {
+                for (int j = i+1; j < m; j++) {
+                    double dis = (points[picked[i]][0] - points[picked[j]][0]) * (points[picked[i]][0] - points[picked[j]][0])
+                                + (points[picked[i]][1] - points[picked[j]][1]) * (points[picked[i]][1] - points[picked[j]][1]);
+                    maxDis = Math.max(maxDis, dis);
                 }
             }
-            minDis = Math.min(minDis, currMaxDis);
-            return;
-        }
-        if (m - size > n - currIdx) {
+            minDis = Math.min(minDis, maxDis);
             return;
         }
 
-        pickedPoints.add(points[currIdx]);
-        choose(currIdx+1, size +1);
-        pickedPoints.remove(pickedPoints.size() - 1);
-
-        choose(currIdx+1, size);
+        for (int i = 0; i < n; i++) {
+            if (curr != 0 && !(picked[curr - 1] < i)) continue;
+            picked[curr] = i;
+            pick(curr + 1);
+        }
     }
 
     public static void main(String[] args) {
@@ -36,12 +33,14 @@ public class Main {
         n = sc.nextInt();
         m = sc.nextInt();
         points = new int[n][2];
+        picked = new int[m];
         for (int i = 0; i < n; i++) {
             points[i][0] = sc.nextInt();
             points[i][1] = sc.nextInt();
         }
         // Please write your code here.
-        choose(0, 0);
-        System.out.print((long) minDis);        
+
+        pick(0);
+        System.out.println(String.format("%.0f", minDis));
     }
 }
