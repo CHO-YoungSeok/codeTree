@@ -26,6 +26,7 @@ public class Main {
         }
         dp[0] = true; 
         for (int i = 0;  i < n; i++) {
+            // for (int j = 0;  j <= half; j++) {
             for (int j = half;  0 <= j; j--) {
                 if (dp[j] && j + arr[i] <= half) {
                     dp[j + arr[i]] = true;
