@@ -12,7 +12,6 @@ public class Main {
             p[i] = sc.nextInt();
         }
         // Please write your code here.
-        int answer = 0;
         int[] dp = new int[n+1];
         for (int i = 0; i < n; i++) {
             dp[i] = p[i];
@@ -20,9 +19,12 @@ public class Main {
                 if (e[j] >= s[i]) continue;
                 dp[i] = Math.max(dp[i], dp[j] + p[i]);
             }
+        }
+        int answer = 0;
+        for (int i = 0; i < n; i++) {
             answer = Math.max(answer, dp[i]);
         }
-
-        System.out.println(answer);
+        
+        System.out.print(answer);
     }
 }
