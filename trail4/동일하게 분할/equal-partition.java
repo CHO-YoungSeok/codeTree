@@ -23,9 +23,8 @@ public class Main {
                 System.out.print("No");
                 return;
             }
-            dp[arr[i]] = true;
         }
-             
+        dp[0] = true; 
         for (int i = 0;  i < n; i++) {
             for (int j = half;  0 <= j; j--) {
                 if (dp[j] && j + arr[i] <= half) {
