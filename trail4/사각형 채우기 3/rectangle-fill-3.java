@@ -8,7 +8,7 @@ public class Main {
         dp[1] = 2;
         dp[2] = 7;
         dp[3] = 22;
-        int sum = 2 + 7 + 22 + 1;
+        long sum = 2 + 7 + 22 + 1;
         for (int i = 4; i <= n; i++) {
             dp[i] = 2 * sum + dp[i-2];
             dp[i] %= 1000000007;
