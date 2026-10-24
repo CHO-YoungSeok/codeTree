@@ -4,19 +4,17 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         // Please write your code here.
-        long[] dp = new long[1001];
-        dp[0] = 1;
+        long[] dp = new long[n+4];
         dp[1] = 2;
         dp[2] = 7;
-        long sum = 0;
-        for (int  i = 0; i < 3; i++) {
-            sum += dp[i];
+        dp[3] = 22;
+        int sum = 2 + 7 + 22 + 1;
+        for (int i = 4; i <= n; i++) {
+            dp[i] = 2 * sum + dp[i-2];
+            dp[i] %= 1000000007;
+            sum += dp[i]; sum %= 1000000007;
         }
-        for (int i = 3; i < n+1; i++) {
-            dp[i] = 2*sum + dp[i-2];
-            dp[i] %= 1000000007l;
-            sum += dp[i] % 1000000007l;
-        }
-        System.out.println(dp[n]);      
+
+        System.out.println(dp[n]);
     }
 }
