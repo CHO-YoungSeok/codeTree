@@ -1,39 +1,82 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Main {
 
-    static long getCount(long m, long x) {
-        long count = 0, mid = 0, low = 1, high = m;
-        while (high >= low) {
-            mid = low + (high - low) / 2;
-            count++;
-            if (mid > x) {
-                high = mid - 1;
-            } else if (mid < x) {
+    static long m, a, b;
+    static long minCount = Integer.MAX_VALUE;
+    static long maxCount = Integer.MIN_VALUE;
+
+    static long getCount(long x) {
+        long count = 1, low = 1, high = m, mid = 0;
+        while (low <= high) {
+            mid = low + (high - low)/2;
+            if (x > mid) {
                 low = mid + 1;
+            } else if (x < mid) {
+                high = mid - 1;
             } else {
                 break;
             }
+            count++;
         }
+
         return count;
     }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        long m = sc.nextLong();
-        long a = sc.nextLong();
-        long b = sc.nextLong();
+        m = sc.nextLong();
+        a = sc.nextLong();
+        b = sc.nextLong();
         // Please write your code here.
 
-        long maxCount = 0, minCount = Long.MAX_VALUE;
-
         for (long x = a; x <= b; x++) {
-            long count = getCount(m, x);
+            long count = getCount(x);
             minCount = Math.min(minCount, count);
             maxCount = Math.max(maxCount, count);
-            // System.out.println(minCount + " " + maxCount);
         }
 
-        System.out.println(minCount + " " + maxCount);
+        System.out.println(String.format("%d %d", minCount, maxCount));
     }
 }
+
+
+
+// import java.util.*;
+
+// public class Main {
+
+//     static long getCount(long m, long x) {
+//         long count = 0, mid = 0, low = 1, high = m;
+//         while (high >= low) {
+//             mid = low + (high - low) / 2;
+//             count++;
+//             if (mid > x) {
+//                 high = mid - 1;
+//             } else if (mid < x) {
+//                 low = mid + 1;
+//             } else {
+//                 break;
+//             }
+//         }
+//         return count;
+//     }
+
+//     public static void main(String[] args) {
+//         Scanner sc = new Scanner(System.in);
+//         long m = sc.nextLong();
+//         long a = sc.nextLong();
+//         long b = sc.nextLong();
+//         // Please write your code here.
+
+//         long maxCount = 0, minCount = Long.MAX_VALUE;
+
+//         for (long x = a; x <= b; x++) {
+//             long count = getCount(m, x);
+//             minCount = Math.min(minCount, count);
+//             maxCount = Math.max(maxCount, count);
+//             // System.out.println(minCount + " " + maxCount);
+//         }
+
+//         System.out.println(minCount + " " + maxCount);
+//     }
+// }
